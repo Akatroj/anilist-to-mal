@@ -19,10 +19,10 @@ jobs:
           path: deploy
       - name: Install
         working-directory: master
-        run: npm install --force
+        run: npm install
       - name: Build
         working-directory: master
-        run: npm run build && mv ./dist ../deploy
+        run: npm run build && cp -R ./dist ../deploy
       - name: Deploy
         uses: EndBug/add-and-commit@v9
         with:
