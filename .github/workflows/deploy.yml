@@ -1,0 +1,38 @@
+name: Deploy
+on:
+  push:
+    branches: [master]
+jobs:
+  deploy:
+    permissions: write-all
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          path: master
+      - name: Checkout deploy
+        uses: actions/checkout@v3
+        with:
+          ref: deploy
+          path: deploy
+      - name: Install
+        working-directory: master
+        run: npm install --force
+      - name: Build
+        working-directory: master
+        run: npm run build && mv ./dist ../deploy
+      - name: Deploy
+        uses: EndBug/add-and-commit@v9
+        with:
+          cwd: './deploy'
+          add: '-f ./dist'
+          tag_push: '--force'
+          new_branch: deploy
+
+
+
+        
+
+

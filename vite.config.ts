@@ -18,6 +18,8 @@ export default defineConfig({
         match: ['*://anilist.co/anime/*'],
         icon: 'https://vitejs.dev/logo.svg',
         connect: ['graphql.anilist.co'],
+        updateURL:
+          'https://github.com/Akatroj/anilist-to-mal/raw/deploy/dist/anilist-to-mal.user.js',
       },
     }),
   ],
