@@ -5,6 +5,7 @@
 // @author       Akatroj
 // @description  Adds a button on anilist anime pages that links to the same anime entry on MAL
 // @icon         https://vitejs.dev/logo.svg
+// @updateURL    https://github.com/Akatroj/anilist-to-mal/raw/deploy/dist/anilist-to-mal.user.js
 // @match        *://anilist.co/anime/*
 // @connect      graphql.anilist.co
 // ==/UserScript==
