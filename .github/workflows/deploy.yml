@@ -9,9 +9,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.4.2
       - name: Install
-        run: pnpm install
+        run: npm install --force
       - name: Build
-        run: pnpm run build
+        run: npm run build
       - name: Deploy
         uses: EndBug/add-and-commit@v9
         with:
