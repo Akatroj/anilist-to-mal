@@ -1,28 +1,21 @@
-import './style.css';
-import typescriptLogo from './typescript.svg';
-import viteLogo from './vite.svg';
-import { setupCounter } from './counter';
+import { createButton } from './components/Button/button';
+import { fetchMalId } from './utils/anilist/api';
 
-(() => {
-  const app = document.createElement('div');
-  document.body.append(app);
-  return app;
-})().innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`;
+const URL_REGEX = /(?:anilist\.co\/anime\/)(?<id>.*)\//;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+async function addButton() {
+  const anilistId = document.URL.match(URL_REGEX)?.groups?.id;
+  console.log(document.URL.match(URL_REGEX));
+  if (!anilistId) throw new Error('No id found in url');
+
+  const malIdPromise = fetchMalId(anilistId);
+
+  const button = createButton('Go to MAL', async () => {
+    const malId = await malIdPromise;
+    window.location.href = `https://myanimelist.net/anime/${malId}/`;
+  });
+
+  document.body.appendChild(button);
+}
+
+addButton();
