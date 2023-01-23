@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         anilist-to-mal
 // @namespace    akatroj.github.io
-// @version      1.0.2
+// @version      1.0.3
 // @author       Akatroj
 // @description  Adds a button on anilist anime pages that links to the same anime entry on MAL
 // @icon         https://vitejs.dev/logo.svg
@@ -79,20 +79,39 @@ query ($anilistId: Int) {
 }
 `.replace(/(^[\s]+)|(\n)/gm, "")
   );
+  var e = setTimeout;
+  function t(t2, n2) {
+    var u = n2.useCachedSetTimeout ? e : setTimeout;
+    return new Promise(function(e2) {
+      u(e2, t2);
+    });
+  }
+  function n(e2) {
+    var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, u = n2.useCachedSetTimeout, r = t(e2, { useCachedSetTimeout: u });
+    function o(e3) {
+      return r.then(function() {
+        return e3;
+      });
+    }
+    return o.then = function() {
+      return r.then.apply(r, arguments);
+    }, o.catch = Promise.resolve().catch, o;
+  }
   addOverrideStyles();
-  const URL_REGEX = /(?:anilist\.co\/anime\/)(?<id>.*)\//;
+  const URL_REGEX = /(?:anilist\.co\/anime\/)(?<id>[^\/]*)/;
   const anilistId = (_b = (_a = document.URL.match(URL_REGEX)) == null ? void 0 : _a.groups) == null ? void 0 : _b.id;
   if (!anilistId)
     throw new Error("No id found in url");
   const malIdPromise = fetchMalId(anilistId);
   const TIMEOUT = 300;
   const MAX_RETRIES = 5;
-  const addButtonWithRetries = (retries) => {
+  const addButtonWithRetries = async (retries) => {
     try {
       if (retries > 0) {
-        setTimeout(() => addButton(malIdPromise), TIMEOUT);
+        addButton(malIdPromise);
       }
-    } catch (e) {
+    } catch (e2) {
+      await n(TIMEOUT);
       addButtonWithRetries(retries - 1);
     }
   };
