@@ -67,12 +67,22 @@ query ($anilistId: Int) {
     return button2;
   }
   async function addButton(anilistId2) {
+    const TIMEOUT = 300;
+    let MAX_RETRIES = 5;
     const buttonContainer = document.querySelector("div.actions");
-    if (!buttonContainer)
-      throw new Error("Cannot find button container!");
-    const malIdPromise = fetchMalId(anilistId2);
-    const button2 = createMALButton(malIdPromise);
-    buttonContainer.appendChild(button2);
+    if (buttonContainer) {
+      const malIdPromise = fetchMalId(anilistId2);
+      const button2 = createMALButton(malIdPromise);
+      buttonContainer.appendChild(button2);
+    } else {
+      console.log("Cannot find button container!");
+      if (MAX_RETRIES) {
+        MAX_RETRIES--;
+        setTimeout(addButton, TIMEOUT);
+      } else {
+        throw new Error("Exceeded max retry count!");
+      }
+    }
   }
   const styles = "#app\n  > div.page-content\n  > div\n  > div.header-wrap\n  > div.header\n  > div\n  > div.cover-wrap.overlap-banner\n  > div\n  > div {\n  display: grid;\n  grid-template-columns: auto 35px 35px;\n  margin-bottom: 20px;\n  margin-top: 20px;\n  grid-gap: 7px;\n}\n";
   function overrideAnilistStyles() {
