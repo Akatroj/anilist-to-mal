@@ -1,12 +1,4 @@
-#app
-  > div.page-content
-  > div
-  > div.header-wrap
-  > div.header
-  > div
-  > div.cover-wrap.overlap-banner
-  > div
-  > div {
+#app div.header div.actions {
   display: grid;
   grid-template-columns: auto 35px 35px;
   margin-bottom: 20px;

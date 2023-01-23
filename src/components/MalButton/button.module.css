@@ -1,5 +1,6 @@
 .button {
   background-image: url('./mal.svg');
+  background-color: #2e51a2; /* svg doesn't work in dev */
   background-size: cover;
   height: 35px;
   padding: 0 14px;

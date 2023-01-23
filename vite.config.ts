@@ -9,7 +9,7 @@ export default defineConfig({
       userscript: {
         name: 'anilist-to-mal',
         namespace: 'akatroj.github.io',
-        version: '1.0.1',
+        version: '1.0.2',
         description:
           'Adds a button on anilist anime pages that links to the same anime entry on MAL',
         author: 'Akatroj',

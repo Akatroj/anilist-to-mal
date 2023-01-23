@@ -1,6 +1,6 @@
 import styles from './anilistOverrides.css?inline';
 
-export function overrideAnilistStyles() {
+export function addOverrideStyles() {
   const style = document.createElement('style');
   style.innerHTML = styles;
   document.head.appendChild(style);
