@@ -20,7 +20,7 @@ export async function addButton(anilistId: string) {
       MAX_RETRIES--;
       setTimeout(addButton, TIMEOUT);
     } else {
-      console.log("Exceeded max retry count!");
+      throw new Error("Exceeded max retry count!");
     }
   }
 }
