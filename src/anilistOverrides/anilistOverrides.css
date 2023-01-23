@@ -1,0 +1,15 @@
+#app
+  > div.page-content
+  > div
+  > div.header-wrap
+  > div.header
+  > div
+  > div.cover-wrap.overlap-banner
+  > div
+  > div {
+  display: grid;
+  grid-template-columns: auto 35px 35px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  grid-gap: 7px;
+}

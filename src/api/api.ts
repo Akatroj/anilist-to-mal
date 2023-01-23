@@ -1,4 +1,4 @@
-import { graphqlRequest } from '../request';
+import { graphqlRequest } from '../utils/request';
 import type { AnilistSingleResponse } from './types';
 
 export async function fetchMalId(anilistId: string) {

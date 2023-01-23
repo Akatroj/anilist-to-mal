@@ -1,0 +1,12 @@
+.button {
+  background-image: url('./mal.svg');
+  background-size: cover;
+  height: 35px;
+  padding: 0 14px;
+  aspect-ratio: 1;
+  z-index: 1000;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
