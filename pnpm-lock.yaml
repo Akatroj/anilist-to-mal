@@ -2,10 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   prettier: ^2.8.3
+  sleep-promise: ^9.1.0
   typescript: ^4.9.4
   typescript-plugin-css-modules: ^4.1.1
   vite: ^4.0.4
   vite-plugin-monkey: ^2.11.1
+
+dependencies:
+  sleep-promise: 9.1.0
 
 devDependencies:
   prettier: 2.8.3
@@ -938,6 +942,10 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
     dev: true
+
+  /sleep-promise/9.1.0:
+    resolution: {integrity: sha512-UHYzVpz9Xn8b+jikYSD6bqvf754xL2uBUzDFwiU6NcdZeifPr6UfgU43xpkPu67VMS88+TI2PSI7Eohgqf2fKA==}
+    dev: false
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
